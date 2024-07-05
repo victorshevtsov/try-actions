@@ -17,7 +17,7 @@ jobs:
   create-release:
     name: Create GitHub release
     # only publish from the origin repository
-    if: github.repository_owner == 'usherlabs'
+    if: github.repository_owner == 'victorshevtsov'
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
