@@ -109,7 +109,7 @@ jobs:
             RUN echo $PATH >> path.txt
             RUN echo $BUILDARCH >> BUILDARCH.txt
             RUN echo $TARGETARCH >> TARGETARCH.txt
-            # COPY ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
+            COPY ./binary-$BUILDARCH/try-actions /usr/local/bin/try-actions
 
       - name: Build and push Docker image
         id: push
