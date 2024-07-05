@@ -154,7 +154,7 @@ jobs:
   create-docker-image-arm64:
     name: "Create Docker image (arm64)"
     needs: create-release
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
