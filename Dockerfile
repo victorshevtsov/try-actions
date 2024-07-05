@@ -3,7 +3,7 @@ FROM rust:1.78 as builder
 WORKDIR /usr/src/verity
 COPY . .
 
-RUN cargo install
+RUN cargo install --path ./
 
 
 FROM debian:bookworm-slim
