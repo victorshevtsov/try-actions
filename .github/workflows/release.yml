@@ -66,13 +66,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: binary-ubuntu-latest
-          path: binary-ubuntu-latest
+          path: binary-x86_64
 
       - name: Download release binaries(macos-14)
         uses: actions/download-artifact@v4
         with:
           name: binary-macos-14
-          path: binary-macos-14
+          path: binary-arch64
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -103,7 +103,7 @@ jobs:
               apt install -y openssl && \
               rm -rf /var/lib/apt/lists/*
             
-            COPY ./ ./
+            COPY ./binary-arch64/try-actions /usr/local/bin/try-actions
 
       - name: Build and push Docker image
         id: push
