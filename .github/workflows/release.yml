@@ -90,8 +90,6 @@ jobs:
           # isAbsolutePath: false
           file: 'Dockerfile'
           content: |
-            Hello
-            World
             FROM debian:bookworm-slim
 
             RUN \
