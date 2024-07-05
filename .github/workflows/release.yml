@@ -68,11 +68,17 @@ jobs:
           name: binary-ubuntu-latest
           path: binary-amd64
 
-      - name: Download release binaries(macos-latest)
+      - name: Download release binaries(macos-13)
         uses: actions/download-artifact@v4
         with:
-          name: binary-macos-latest
-          path: binary-arm64
+          name: binary-macos-13
+          path: binary-macos-13
+
+      - name: Download release binaries(macos-14)
+        uses: actions/download-artifact@v4
+        with:
+          name: binary-macos-14
+          path: binary-macos-14
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -109,9 +115,9 @@ jobs:
             # RUN echo $PATH >> path.txt
             # RUN echo $BUILDARCH >> BUILDARCH.txt
             # RUN echo $TARGETARCH >> TARGETARCH.txt
-            COPY --chmod=555 ./binary-* /
-            COPY --chmod=555 ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
-            CMD ["try-actions"]
+            COPY ./binary-* /
+            # COPY --chmod=555 ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
+            # CMD ["try-actions"]
 
 
       - name: Build and push Docker image
