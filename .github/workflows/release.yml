@@ -102,6 +102,8 @@ jobs:
               apt update && \
               apt install -y openssl && \
               rm -rf /var/lib/apt/lists/*
+            
+            COPY ./ ./
 
       - name: Build and push Docker image
         id: push
