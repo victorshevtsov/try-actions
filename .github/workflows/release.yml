@@ -103,7 +103,7 @@ jobs:
               apt install -y openssl && \
               rm -rf /var/lib/apt/lists/*
 
-            COPY ./binary-$BUILDARCH/try-actions /usr/local/bin/try-actions
+            COPY ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
 
       - name: Build and push Docker image
         id: push
