@@ -100,16 +100,18 @@ jobs:
             ARG BUILDARCH
             ARG TARGETARCH
 
-            RUN \
-              apt update && \
-              apt install -y openssl && \
-              rm -rf /var/lib/apt/lists/*
+            # RUN \
+            #   apt update && \
+            #   apt install -y openssl && \
+            #   rm -rf /var/lib/apt/lists/*
 
-            RUN env 
-            RUN echo $PATH >> path.txt
-            RUN echo $BUILDARCH >> BUILDARCH.txt
-            RUN echo $TARGETARCH >> TARGETARCH.txt
-            COPY ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
+            # RUN env 
+            # RUN echo $PATH >> path.txt
+            # RUN echo $BUILDARCH >> BUILDARCH.txt
+            # RUN echo $TARGETARCH >> TARGETARCH.txt
+            COPY --chmod='+x' ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
+            CMD ["try-actions"]
+
 
       - name: Build and push Docker image
         id: push
