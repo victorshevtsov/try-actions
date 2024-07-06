@@ -48,7 +48,7 @@ jobs:
     steps:
       - name: Install prerequisites
         run: |
-          sudo apt update && sudo apt install -y openssl openssl-dev
+          sudo apt update && sudo apt install -y openssl libssl-dev
 
       - name: Check out the repository
         uses: actions/checkout@v4
