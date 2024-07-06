@@ -44,7 +44,6 @@ jobs:
             os: ubuntu-latest
           - target: x86_64-apple-darwin
             os: macos-latest
-        # os: [ubuntu-latest, macos-13, macos-14]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out the repository
@@ -56,8 +55,6 @@ jobs:
           target: ${{ matrix.target }}
           bin: try-actions
           token: ${{ secrets.GITHUB_TOKEN }}
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -70,9 +67,6 @@ jobs:
     needs: upload-assets
     runs-on: ubuntu-latest
     steps:
-      # - name: Check out the repository
-      #   uses: actions/checkout@v4
-
       - name: Download release binaries(aarch64-unknown-linux-gnu)
         uses: actions/download-artifact@v4
         with:
@@ -103,22 +97,18 @@ jobs:
 
       - uses: 1arp/create-a-file-action@0.4.5
         with:
-          # path: 'src'
-          # isAbsolutePath: false
           file: "Dockerfile"
           content: |
             FROM debian:bookworm-slim
             ARG TARGETARCH
 
-            # RUN \
-            #   apt update && \
-            #   apt install -y openssl && \
-            #   rm -rf /var/lib/apt/lists/*
+            RUN \
+              apt update && \
+              apt install -y openssl && \
+              rm -rf /var/lib/apt/lists/*
 
-            # WORKDIR /try
-            # COPY ./ ./
             COPY --chmod=555 ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
-            # CMD ["try-actions"]
+            CMD ["try-actions"]
 
       - name: Build and push Docker image
         id: push
