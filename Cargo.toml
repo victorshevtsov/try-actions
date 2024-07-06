@@ -18,10 +18,7 @@ hyper = "0.14"
 notary-server = { git = "https://github.com/tlsnotary/tlsn", rev = "v0.1.0-alpha.6" }
 openssl = { version = "0.10.64", features = ["vendored"] }
 p256 = "0.13.2"
-pathsearch = "0.2.0"
 prost = "0.12.6"
-prost-build = "0.12.6"
-protobuf-zmq-rust-generator = "0.1.1"
 rustls = "0.21"
 rustls-pemfile = "1.0.2"
 serde = "1.0.203"
@@ -42,3 +39,8 @@ url = "2.5.0"
 # verity-verifier = { path = "./verifier" }
 # verity-verifier-node = { path = "./verifier-node" }
 zmq = "0.9.2"
+
+[build-dependencies]
+pathsearch = "0.2.0"
+prost-build = "0.12.6"
+protobuf-zmq-rust-generator = "0.1.1"
