@@ -59,14 +59,21 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
+      - name: Install Cross
+        run: |
+          cargo install cross
+
+      - name: Create Cross configuration
+        uses: 1arp/create-a-file-action@0.4.5
+        with:
+          file: "Cross.toml"
+          content: |
+            [target.${{ matrix.target }}]
+            pre-build = ["apt install -y libzmq3-dev"]
+
       - name: Build
         run: |
-          cargo install cross &&
           cross build --release --target ${{ matrix.target }}
-        # with:
-        #   target: ${{ matrix.target }}
-        #   args: "--locked --release"
-        #   strip: true
 
       # - name: Build binary
       #   uses: houseabsolute/actions-rust-cross@v0
