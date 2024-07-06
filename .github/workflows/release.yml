@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: binary-${{ matrix.target }}
-          path: ./target/release/try-actions
+          path: ./target/${{ matrix.target }}/release/try-actions
 
   create-docker-image:
     name: "Create Docker image"
