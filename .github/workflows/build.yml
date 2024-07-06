@@ -24,6 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Add target
+        run: rustup target add ${{ matrix.target }}
+
       - name: Rustup
         run: rustup show
 
