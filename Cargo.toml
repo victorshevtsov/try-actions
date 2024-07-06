@@ -16,7 +16,7 @@ getrandom = "0.2.15"
 home = "0.5.9"
 hyper = "0.14"
 # notary-server = { git = "https://github.com/tlsnotary/tlsn", rev = "v0.1.0-alpha.6" }
-# openssl = "0.10.64"
+openssl = "0.10.64"
 p256 = "0.13.2"
 pathsearch = "0.2.0"
 prost = "0.12.6"
