@@ -1,4 +1,4 @@
-// pub mod message;
+pub mod message;
 
 fn main() {
     println!("Hello, world!");
