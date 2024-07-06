@@ -46,9 +46,9 @@ jobs:
           #   os: macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      # - name: Install prerequisites
-      #   run: |
-      #     sudo apt update && sudo apt install -y pkg-config libssl-dev openssl
+      - name: Install prerequisites
+        run: |
+          sudo apt update && sudo apt install -y pkg-config libssl-dev openssl
 
       - name: Check out the repository
         uses: actions/checkout@v4
