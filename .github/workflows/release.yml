@@ -77,13 +77,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: binary-aarch64-unknown-linux-gnu
-          path: binary-aarch64-unknown-linux-gnu
+          path: binary-arm64
 
       - name: Download release binaries(x86_64-unknown-linux-gnu)
         uses: actions/download-artifact@v4
         with:
           name: binary-x86_64-unknown-linux-gnu
-          path: binary-x86_64-unknown-linux-gnu
+          path: binary-amd64
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -115,9 +115,9 @@ jobs:
             #   apt install -y openssl && \
             #   rm -rf /var/lib/apt/lists/*
 
-            WORKDIR /try
-            COPY ./ ./
-            # COPY --chmod=555 ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
+            # WORKDIR /try
+            # COPY ./ ./
+            COPY --chmod=555 ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
             # CMD ["try-actions"]
 
       - name: Build and push Docker image
