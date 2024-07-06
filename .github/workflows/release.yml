@@ -53,12 +53,19 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - uses: taiki-e/upload-rust-binary-action@v1
-        id: build-binary
+      - name: Build binary
+        uses: houseabsolute/actions-rust-cross@v0
         with:
-          target: ${{ matrix.target }}
-          bin: try-actions
-          token: ${{ secrets.GITHUB_TOKEN }}
+          target: ${{ matrix.platform.target }}
+          args: "--locked --release"
+          strip: true
+
+      # - uses: taiki-e/upload-rust-binary-action@v1
+      #   id: build-binary
+      #   with:
+      #     target: ${{ matrix.target }}
+      #     bin: try-actions
+      #     token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
