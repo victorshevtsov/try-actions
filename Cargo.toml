@@ -41,4 +41,4 @@ url = "2.5.0"
 # verity-prover = { path = "./prover" }
 # verity-verifier = { path = "./verifier" }
 # verity-verifier-node = { path = "./verifier-node" }
-zmq = "0.10.0"
+# zmq = "0.10.0"
