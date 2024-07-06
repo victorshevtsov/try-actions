@@ -111,11 +111,12 @@ jobs:
             #   apt install -y openssl && \
             #   rm -rf /var/lib/apt/lists/*
 
+            WORKDIR /try
             # RUN env 
             # RUN echo $PATH >> path.txt
             # RUN echo $BUILDARCH >> BUILDARCH.txt
             # RUN echo $TARGETARCH >> TARGETARCH.txt
-            COPY ./binary-* /
+            COPY ./ ./
             # COPY --chmod=555 ./binary-$TARGETARCH/try-actions /usr/local/bin/try-actions
             # CMD ["try-actions"]
 
