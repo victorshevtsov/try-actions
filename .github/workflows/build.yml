@@ -54,4 +54,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: try-actions-${{ matrix.target }}
-          path: ./target/${{ matrix.target }}/try-actions
+          path: ./target/${{ matrix.target }}/release/try-actions
