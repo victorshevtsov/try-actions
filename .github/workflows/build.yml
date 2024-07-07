@@ -32,8 +32,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install libzmq3-dev
-        run: sudo apt install -y libzmq3-dev:arm64
+      # - name: Install libzmq3-dev
+      #   run: sudo apt install -y libzmq3-dev:arm64
 
       # - name: Add toolchain
       #   run: rustup toolchain install stable-${{ matrix.target }}
