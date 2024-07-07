@@ -92,12 +92,15 @@ jobs:
       #     args: "--locked --release"
       #     strip: true
 
-      - uses: taiki-e/upload-rust-binary-action@v1
-        id: build-binary
-        with:
-          target: ${{ matrix.target }}
-          bin: try-actions
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: taiki-e/upload-rust-binary-action@v1
+      #   id: build-binary
+      #   with:
+      #     target: ${{ matrix.target }}
+      #     bin: try-actions
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: cargo build --release --target ${{ matrix.target }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
