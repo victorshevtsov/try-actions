@@ -99,6 +99,9 @@ jobs:
       #     bin: try-actions
       #     token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Add target
+        run: rustup target add ${{ matrix.target }}
+
       - name: Build
         run: cargo build --release --target ${{ matrix.target }}
 
