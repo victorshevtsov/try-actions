@@ -28,8 +28,7 @@ jobs:
 
       - name: Add target
         run: |
-          rustup target add ${{ matrix.target }} &&
-          rustup default ${{ matrix.target }}
+          rustup target add ${{ matrix.target }}
 
       - name: Rustup
         run: rustup show
