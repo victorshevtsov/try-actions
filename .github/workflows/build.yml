@@ -35,11 +35,11 @@ jobs:
       # - name: Add toolchain
       #   run: rustup toolchain install stable-${{ matrix.target }}
 
-      - name: Set toolchain
-        run: rustup default stable-${{ matrix.target }}
+      # - name: Set toolchain
+      #   run: rustup default stable-${{ matrix.target }}
 
-      # - name: Add target
-      #   run: rustup target add ${{ matrix.target }}
+      - name: Add target
+        run: rustup target add ${{ matrix.target }}
 
       - name: Rustup
         run: rustup show
