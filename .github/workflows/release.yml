@@ -36,7 +36,16 @@ jobs:
     needs: create-release
     strategy:
       matrix:
-        target: [aarch64-unknown-linux-gnu, x86_64-unknown-linux-gnu]
+        include:
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-latest
+          - target: aarch64-apple-darwin
+            os: macos-14
+          - target: x86_64-apple-darwin
+            os: macos-13
+          - target: aarch64-unknown-linux-gnu
+            os: self-hosted
+        # target: [aarch64-unknown-linux-gnu, x86_64-unknown-linux-gnu]
         # include:
         #   - target: aarch64-unknown-linux-gnu
         #     # os: ubuntu-latest
@@ -60,21 +69,21 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Install Cross
-        run: |
-          cargo install cross
+      # - name: Install Cross
+      #   run: |
+      #     cargo install cross
 
-      - name: Create Cross configuration
-        uses: 1arp/create-a-file-action@0.4.5
-        with:
-          file: "Cross.toml"
-          content: |
-            [target.${{ matrix.target }}]
-            pre-build = ["apt install -y libzmq3-dev"]
+      # - name: Create Cross configuration
+      #   uses: 1arp/create-a-file-action@0.4.5
+      #   with:
+      #     file: "Cross.toml"
+      #     content: |
+      #       [target.${{ matrix.target }}]
+      #       pre-build = ["apt install -y libzmq3-dev"]
 
-      - name: Build
-        run: |
-          cross build --release --target ${{ matrix.target }}
+      # - name: Build
+      #   run: |
+      #     cross build --release --target ${{ matrix.target }}
 
       # - name: Build binary
       #   uses: houseabsolute/actions-rust-cross@v0
@@ -83,12 +92,12 @@ jobs:
       #     args: "--locked --release"
       #     strip: true
 
-      # - uses: taiki-e/upload-rust-binary-action@v1
-      #   id: build-binary
-      #   with:
-      #     target: ${{ matrix.target }}
-      #     bin: try-actions
-      #     token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: taiki-e/upload-rust-binary-action@v1
+        id: build-binary
+        with:
+          target: ${{ matrix.target }}
+          bin: try-actions
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
